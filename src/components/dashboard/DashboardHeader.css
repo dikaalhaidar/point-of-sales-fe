@@ -1,0 +1,47 @@
+.dashboard-header {
+  width: 100%;
+}
+
+.dashboard-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-header-top h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.notification-button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: #222222;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.notification-button:hover {
+  color: #c96f24;
+}
+
+.dashboard-header-greeting {
+  margin-top: 22px;
+}
+
+.dashboard-header-greeting h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+}
+
+.dashboard-header-greeting p {
+  margin: 5px 0 0;
+  font-size: 10px;
+  color: #555555;
+}
