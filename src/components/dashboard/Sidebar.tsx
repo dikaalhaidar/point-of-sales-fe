@@ -1,65 +1,59 @@
-import "./Sidebar.css";
 
-export default function Sidebar() {
+type SidebarProps = {
+  role: "Admin" | "Cashier";
+};
+
+export default function Sidebar({ role }: SidebarProps) {
   return (
     <aside className="dashboard-sidebar">
       <div className="sidebar-brand">
-        <div className="sidebar-logo">×</div>
-
-        <div>
-          <h2>Point of Sale!</h2>
-        </div>
+        <div className="sidebar-logo" aria-hidden="true">P</div>
+        <h2>Point of Sale</h2>
       </div>
 
-      <nav className="sidebar-menu">
-        <button className="sidebar-menu-item active">
-          <span>⌂</span>
+      <nav className="sidebar-menu" aria-label="Navigasi utama">
+        <button className="sidebar-menu-item active" type="button" aria-current="page">
           Dashboard
         </button>
 
-        <button className="sidebar-menu-item">
-          <span>▤</span>
-          Kategori
-        </button>
+        {role === "Admin" ? (
+          <>
+            <button className="sidebar-menu-item" type="button">Kategori</button>
 
-        <div className="sidebar-section">
-          <div className="sidebar-section-title">
-            <span>♧</span>
-            Produk
-          </div>
+            <section className="sidebar-section" aria-labelledby="sidebar-products">
+              <h3 className="sidebar-section-title" id="sidebar-products">Produk</h3>
+              <div className="sidebar-submenu">
+                <button className="sidebar-submenu-item" type="button">Daftar produk</button>
+                <button className="sidebar-submenu-item" type="button">Stok</button>
+                <button className="sidebar-submenu-item" type="button">Riwayat stok</button>
+              </div>
+            </section>
 
-          <button className="sidebar-submenu-item">
-            Daftar Produk
-          </button>
-
-          <button className="sidebar-submenu-item">
-            Stok
-          </button>
-
-          <button className="sidebar-submenu-item">
-            Histori Stok
-          </button>
-        </div>
-
-        <div className="sidebar-section">
-          <div className="sidebar-section-title">
-            <span>▣</span>
-            Laporan Transaksi
-          </div>
-
-          <button className="sidebar-submenu-item">
-            Ringkasan Pembayaran
-          </button>
-
-          <button className="sidebar-submenu-item">
-            Penjualan Harian
-          </button>
-
-          <button className="sidebar-submenu-item">
-            Produk Terlaris
-          </button>
-        </div>
+            <section className="sidebar-section" aria-labelledby="sidebar-reports">
+              <h3 className="sidebar-section-title" id="sidebar-reports">Laporan transaksi</h3>
+              <div className="sidebar-submenu">
+                <button className="sidebar-submenu-item" type="button">Ringkasan pembayaran</button>
+                <button className="sidebar-submenu-item" type="button">Penjualan harian</button>
+                <button className="sidebar-submenu-item" type="button">Produk terlaris</button>
+              </div>
+            </section>
+          </>
+        ) : (
+          <>
+            <button className="sidebar-menu-item" type="button">Transaksi baru</button>
+            <button className="sidebar-menu-item" type="button">Riwayat transaksi</button>
+          </>
+        )}
       </nav>
+
+      <div className="sidebar-preview-footer">
+        <span className="sidebar-role-mark">{role === "Admin" ? "AD" : "KS"}</span>
+        <div>
+          <strong>{role === "Admin" ? "Admin" : "Kasir"}</strong>
+          <span>Mode pratinjau</span>
+        </div>
+        <a href="/" aria-label="Kembali ke halaman login" title="Kembali ke halaman login">Keluar</a>
+      </div>
     </aside>
   );
 }
