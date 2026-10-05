@@ -1,0 +1,80 @@
+/* src/pages/dashboard/KategoriPage.css */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 30px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #e5e7eb;
+  padding: 10px 15px;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.search-icon {
+  margin-right: 10px;
+  color: #6b7280;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.btn-tambah {
+  background-color: #d1d5db;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-tambah:hover {
+  background-color: #9ca3af;
+}
+
+.kategori-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .kategori-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .kategori-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .kategori-grid { grid-template-columns: 1fr; }
+  .toolbar { flex-direction: column; gap: 15px; align-items: stretch; }
+}
