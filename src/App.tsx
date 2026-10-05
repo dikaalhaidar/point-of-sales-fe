@@ -1,7 +1,7 @@
-import DashboardPage from "./pages/dashboard/DashboardPage";
+import POS from "./pages/POS/POS.tsx";
 
 function App() {
-  return <DashboardPage />;
+  return <POS />;
 }
 
 export default App;

@@ -1,0 +1,753 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   POS PAGE
+========================================= */
+.pos-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: white;
+
+  padding: 0;
+
+  display: flex;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.pos-sidebar {
+  width: 130px;
+
+  background: #c96f24;
+
+  min-height: calc(100vh - 30px);
+
+  padding: 15px 10px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.pos-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 15px;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid #bdbdbd;
+
+  font-size: 7px;
+  color: #222;
+}
+
+
+/* logo kotak */
+
+.logo-icon {
+  width: 25px;
+  height: 25px;
+
+  background: white;
+
+  border-radius: 4px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* garis X */
+
+.logo-icon::before,
+.logo-icon::after {
+  content: "";
+
+  position: absolute;
+
+  width: 23px;
+  height: 1px;
+
+  background: #cfcfcf;
+
+  left: 1px;
+  top: 12px;
+}
+
+.logo-icon::before {
+  transform: rotate(45deg);
+}
+
+.logo-icon::after {
+  transform: rotate(-45deg);
+}
+
+
+/* =========================================
+   MENU
+========================================= */
+
+.pos-menu {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+/* =========================================
+   MENU SIDEBAR
+========================================= */
+
+.pos-menu-item {
+  width: 100%;
+
+  border: none;
+
+  background: transparent;
+
+  color: #000;
+
+  text-align: left;
+
+  padding: 6px 7px;
+
+  border-radius: 3px;
+
+  font-size: 7px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+/* MENU AKTIF */
+
+.pos-menu-item.active {
+  background: #ffffff;
+
+  color: #000000;
+}
+
+
+/* ICON MENU */
+
+.menu-icon {
+  font-size: 8px;
+
+  color: #000;
+}
+
+
+/* ICON IKUT PUTIH SAAT AKTIF */
+
+.pos-menu-item.active .menu-icon {
+  color: #000000;
+}
+
+
+/* SUBMENU */
+
+.pos-submenu {
+  border: none;
+
+  background: transparent;
+
+  color: #000;
+
+  text-align: left;
+
+  padding: 4px 5px 4px 21px;
+
+  font-size: 6px;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.pos-main {
+  flex: 1;
+
+  min-width: 0;
+
+  min-height: calc(100vh - 30px);
+
+  background: white;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.pos-header {
+  height: 48px;
+
+  padding: 8px 20px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+}
+
+
+.pos-header h1 {
+  margin: 0;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #111;
+}
+
+
+.pos-date {
+  font-size: 7px;
+
+  color: #333;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.pos-content {
+  height: calc(100vh - 78px);
+
+  display: flex;
+
+  gap: 15px;
+
+  padding: 0 10px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   PRODUCT AREA
+========================================= */
+
+.product-area {
+  flex: 1;
+
+  min-width: 0;
+
+  overflow-y: auto;
+
+  padding-right: 2px;
+}
+
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.product-toolbar {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 18px;
+
+  margin-bottom: 10px;
+}
+
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.category-area {
+  width: 45px;
+
+  flex-shrink: 0;
+}
+
+
+.category-title {
+  display: block;
+
+  font-size: 6px;
+
+  margin-bottom: 5px;
+
+  color: #333;
+}
+
+
+.category-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.category-button {
+  width: 42px;
+
+  height: 30px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #dcdcdc;
+
+  color: #555;
+
+  font-size: 5px;
+
+  cursor: pointer;
+}
+
+
+.category-button.active {
+  background: #c96f24;
+
+  color: white;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-wrapper {
+  width: 155px;
+
+  height: 19px;
+
+  margin-top: 13px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 4px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 0 7px;
+}
+
+
+.search-wrapper span {
+  color: #999;
+
+  font-size: 10px;
+}
+
+
+.search-wrapper input {
+  width: 100%;
+
+  border: none;
+
+  outline: none;
+
+  font-size: 6px;
+}
+
+
+.search-wrapper input::placeholder {
+  color: #aaa;
+}
+
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.product-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(75px, 1fr));
+
+  gap: 7px;
+}
+
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.product-card {
+  background: #dedede;
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  min-width: 0;
+}
+
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.product-image {
+  width: 100%;
+
+  aspect-ratio: 1.25 / 1;
+
+  background: #d6d6d6;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  position: relative;
+}
+
+
+/* X sementara */
+
+.product-image > span {
+  font-size: 34px;
+
+  font-weight: 100;
+
+  color: #bdbdbd;
+}
+
+
+/* =========================================
+   FOTO ASLI NANTI
+========================================= */
+
+.product-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================
+   PRODUCT INFO
+========================================= */
+
+.product-info {
+  min-height: 38px;
+
+  padding: 5px 6px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.product-name {
+  margin: 0 0 2px;
+
+  font-size: 6px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+.product-price {
+  margin: 0;
+
+  font-size: 5px;
+
+  color: #555;
+}
+
+
+/* =========================================
+   PLUS BUTTON
+========================================= */
+
+.add-product {
+  width: 16px;
+
+  height: 16px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: white;
+
+  color: #333;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+.add-product:hover {
+  background: #c96f24;
+
+  color: white;
+}
+
+
+/* =========================================
+   ORDER PANEL
+========================================= */
+
+.order-panel {
+  width: 170px;
+
+  min-height: 390px;
+
+  background: #ddd;
+
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   EMPTY ORDER
+========================================= */
+
+.empty-order {
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #555;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   ORDER CONTENT
+========================================= */
+
+.order-content {
+  height: 100%;
+
+  background: white;
+
+  padding: 15px;
+}
+
+
+.order-content h2 {
+  margin: 0 0 15px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   ORDER LIST
+========================================= */
+
+.order-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+.order-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  font-size: 8px;
+}
+
+
+.order-item strong {
+  display: block;
+
+  font-size: 8px;
+}
+
+
+.order-item small {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 7px;
+
+  color: #777;
+}
+
+
+/* =========================================
+   TOTAL
+========================================= */
+
+.order-total {
+  border-top: 1px solid #ddd;
+
+  margin-top: 20px;
+
+  padding-top: 12px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   PAYMENT
+========================================= */
+
+.payment-button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  padding: 10px;
+
+  background: #c96f24;
+
+  color: white;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+
+.payment-button:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.product-area::-webkit-scrollbar {
+  width: 4px;
+}
+
+
+.product-area::-webkit-scrollbar-thumb {
+  background: #ccc;
+
+  border-radius: 10px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .pos-sidebar {
+    width: 100px;
+  }
+
+  .product-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+  .order-panel {
+    width: 150px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .pos-page {
+    padding: 0;
+  }
+
+  .pos-sidebar {
+    display: none;
+  }
+
+  .pos-content {
+    flex-direction: column;
+
+    height: auto;
+  }
+
+  .order-panel {
+    width: 100%;
+
+    min-height: 250px;
+  }
+
+}
