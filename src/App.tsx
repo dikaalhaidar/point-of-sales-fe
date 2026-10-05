@@ -1,17 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import KategoriPage from './pages/dashboard/KategoriPage';
-import Sidebar from './components/dashboard/Sidebar';
+import LoginPage from "./pages/LoginPage";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/kategori" element={<KategoriPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <LoginPage />;
 }
 
 export default App;

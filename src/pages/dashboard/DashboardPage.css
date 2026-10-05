@@ -1,0 +1,18 @@
+.dashboard-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.dashboard-main h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #222222;
+}
