@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from 'react'
 import piclogin from '../assets/pictlogin.png'
-import '../LoginPage.css'
 function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [message, setMessage] = useState('')
@@ -46,6 +45,12 @@ function LoginPage() {
             <button className="login-button" type="submit">Masuk</button>
             {message && <p className="form-message" role="status">{message}</p>}
           </form>
+
+          <div className="demo-access">
+            <span>Pratinjau dashboard</span>
+            <a href="/preview/admin">Admin</a>
+            <a href="/preview/cashier">Kasir</a>
+          </div>
 
         </div>
       </section>
