@@ -50,6 +50,7 @@ function LoginPage() {
             <span>Pratinjau dashboard</span>
             <a href="/preview/admin">Admin</a>
             <a href="/preview/cashier">Kasir</a>
+            <a href="/preview/pos">POS</a>
           </div>
 
         </div>
