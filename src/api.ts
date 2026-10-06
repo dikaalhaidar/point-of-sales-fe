@@ -32,18 +32,22 @@ export const login = async (username: string, password: string): Promise<LoginRe
 export const getProducts = async () => {
   const token = localStorage.getItem("token");
 
-  const response = await fetch(`${BASE_URL}/products`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const response = await fetch(
+    `${BASE_URL}/products?page=1&size=10`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  const result = await response.json();
+
+  console.log("PRODUCT API:", result);
 
   if (!response.ok) {
-    throw new Error("Failed to fetch products");
+    throw new Error(result.message || "Failed to fetch products");
   }
-  
 
-  return response.json();
+  return result;
 };
