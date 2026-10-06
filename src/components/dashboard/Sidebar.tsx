@@ -40,6 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({ role }) => {
         { label: 'Riwayat stok', path: '/preview/admin/riwayat-stok' },
       ],
     },
+    
     {
       title: 'Laporan transaksi',
       items: [
@@ -58,7 +59,7 @@ const Sidebar: React.FC<SidebarProps> = ({ role }) => {
         <h2>Point of Sale</h2>
       </div>
 
-      {/* Menu Utama */}
+
       <nav className="sidebar-menu">
         <Link
           to="/preview/admin"

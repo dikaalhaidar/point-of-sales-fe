@@ -313,28 +313,6 @@ button, input { font: inherit; }
   font-size: inherit;
 }
 
-.demo-access {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin-top: 24px;
-  padding-top: 17px;
-  border-top: 1px solid #e7ebe8;
-  color: #66736c;
-  font-size: 11px;
-}
-
-.demo-access a {
-  color: #315e4c;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.demo-access a:hover {
-  text-decoration: underline;
-}
-
 .copyright {
   position: absolute;
   right: 30px;

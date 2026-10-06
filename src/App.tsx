@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
 import KategoriPage from "./pages/dashboard/KategoriPage";
 import KategoriDetailPage from "./pages/dashboard/KategoriDetailPage";
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         {/* Default → Login */}
         <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
         {/* Admin */}
         <Route path="/preview/admin" element={<DashboardPage role="Admin" />} />
