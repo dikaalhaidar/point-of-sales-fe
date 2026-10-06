@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
 import { Eye, Trash2 } from 'lucide-react';
 import Sidebar from '../../components/dashboard/Sidebar';
 import './KategoriDetailPage.css';
@@ -13,7 +12,7 @@ interface ProdukRow {
 }
 
 const KategoriDetailPage: React.FC = () => {
-  const { id } = useParams();
+//   const { id } = useParams();
 
   // Dummy data
   const namaKategori = 'Makanan Berat';
