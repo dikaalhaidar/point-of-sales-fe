@@ -1,21 +1,31 @@
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
-import RegisterPage from "./pages/RegisterPage";
+import KategoriPage from "./pages/dashboard/KategoriPage";
+import KategoriDetailPage from "./pages/dashboard/KategoriDetailPage";
+import TambahKategoriPage from "./pages/dashboard/TambahKategoriPage";
 
 function App() {
-  if (window.location.pathname === "/register") {
-    return <RegisterPage />;
-  }
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Default → Login */}
+        <Route path="/" element={<LoginPage />} />
 
-  if (window.location.pathname === "/preview/admin") {
-    return <DashboardPage role="Admin" />;
-  }
+        {/* Admin */}
+        <Route path="/preview/admin" element={<DashboardPage role="Admin" />} />
+        <Route path="/preview/admin/kategori" element={<KategoriPage />} />
+        <Route path="/preview/admin/kategori/tambah" element={<TambahKategoriPage />} />
+        <Route path="/preview/admin/kategori/:id" element={<KategoriDetailPage />} />
 
-  if (window.location.pathname === "/preview/cashier") {
-    return <DashboardPage role="Cashier" />;
-  }
+        {/* Cashier */}
+        <Route path="/preview/cashier" element={<DashboardPage role="Cashier" />} />
 
-  return <LoginPage />;
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

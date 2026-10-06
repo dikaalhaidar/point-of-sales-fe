@@ -1,0 +1,172 @@
+/* =========================================
+   HALAMAN TAMBAH KATEGORI
+========================================= */
+.form-card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 40px;
+  border: 1px solid #e3e8e4;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(31, 55, 45, 0.04);
+}
+
+.form-card-title {
+  margin: 0 0 28px;
+  color: #26352e;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+/* Form rows */
+.kategori-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+.form-row label {
+  color: #46544b;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.form-row .required {
+  color: #d64545;
+  margin-left: 2px;
+}
+
+/* Text input */
+.form-row input[type='text'] {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid #e1e7e3;
+  border-radius: 8px;
+  background: #fff;
+  color: #26352e;
+  font-family: inherit;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.form-row input[type='text']::placeholder {
+  color: #a2ada6;
+}
+
+.form-row input[type='text']:focus {
+  border-color: #214b3b;
+  box-shadow: 0 0 0 3px rgba(33, 75, 59, 0.08);
+}
+
+/* File input */
+.file-input-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 42px;
+  border: 1px solid #e1e7e3;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.file-input-wrap:focus-within {
+  border-color: #214b3b;
+  box-shadow: 0 0 0 3px rgba(33, 75, 59, 0.08);
+}
+
+.file-btn {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 18px;
+  border-right: 1px solid #e1e7e3;
+  background: #f5f7f5;
+  color: #46544b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.file-btn:hover {
+  background: #eef2ef;
+}
+
+.file-name {
+  flex: 1;
+  padding: 0 14px;
+  color: #8894a0;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Sembunyikan input file asli */
+.file-input-wrap input[type='file'] {
+  display: none;
+}
+
+/* Tombol aksi */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-batal,
+.btn-simpan {
+  min-width: 96px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 140ms ease, background 140ms ease;
+}
+
+.btn-batal {
+  background: #1c1c1c;
+  color: #fff;
+}
+
+.btn-batal:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.btn-simpan {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.btn-simpan:hover {
+  background: #266b29;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .form-card {
+    padding: 24px 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

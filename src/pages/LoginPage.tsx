@@ -1,12 +1,48 @@
-import { useState, type FormEvent } from 'react'
+import { useState, type SubmitEvent } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { login } from '../api'
 import piclogin from '../assets/pictlogin.png'
 function LoginPage() {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [message, setMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
-    setMessage('Password atau username salah. Silakan coba lagi.')
+    setMessage('')
+    setIsSubmitting(true)
+
+    const formData = new FormData(event.currentTarget)
+    const username = formData.get('username')
+    const password = formData.get('password')
+
+    if (typeof username !== 'string' || typeof password !== 'string') {
+      setMessage('Username dan password wajib diisi.')
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      const result = await login(username, password)
+      const role = result.data.role.trim().toLowerCase()
+      const destination = role === 'admin'
+        ? '/preview/admin'
+        : role === 'cashier' || role === 'kasir'
+          ? '/preview/cashier'
+          : null
+
+      if (!destination) {
+        throw new Error(`Role akun "${result.data.role}" belum didukung.`)
+      }
+
+      localStorage.setItem('token', result.data.token)
+      navigate(destination)
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : 'Login gagal. Silakan coba lagi.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -41,7 +77,9 @@ function LoginPage() {
               </button>
             </div>
 
-            <button className="login-button " type="submit">Masuk</button>
+            <button className="login-button" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Memproses...' : 'Masuk'}
+            </button>
             {message && <p className="form-message" role="status">{message}</p>}
           </form>
 
