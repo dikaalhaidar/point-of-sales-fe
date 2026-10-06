@@ -41,10 +41,11 @@ function LoginPage() {
               </button>
             </div>
 
-            <label className="remember-option"><input type="checkbox" name="remember" /><span>Ingat saya</span></label>
-            <button className="login-button" type="submit">Masuk</button>
+            <button className="login-button " type="submit">Masuk</button>
             {message && <p className="form-message" role="status">{message}</p>}
           </form>
+
+          <p className="form-footer">Belum punya akun? <a href="/register">Daftar</a></p>
 
           <div className="demo-access">
             <span>Pratinjau dashboard</span>

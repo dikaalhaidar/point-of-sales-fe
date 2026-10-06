@@ -168,6 +168,7 @@ input {
 }
 
 .form-content input[type='text'],
+.form-content input[type='email'],
 .form-content input[type='password'] {
   box-sizing: border-box;
   width: 100%;
@@ -276,11 +277,12 @@ input {
 
 .login-button {
   display: flex;
-  height: 46px;
+  height: 40px;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  margin-top: 16px;
   border: 0;
+  gap: 6px;
   border-radius: 6px;
   background: var(--accent);
   color: #fff;
