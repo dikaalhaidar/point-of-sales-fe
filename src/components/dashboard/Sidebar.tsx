@@ -1,59 +1,126 @@
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-type SidebarProps = {
-  role: "Admin" | "Cashier";
-};
+interface SidebarProps {
+  role: 'Admin' | 'Cashier';
+}
 
-export default function Sidebar({ role }: SidebarProps) {
+interface SubmenuItem {
+  label: string;
+  path: string;
+}
+
+interface SectionItem {
+  title: string;
+  items: SubmenuItem[];
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ role }) => {
+  const location = useLocation();
+
+  // State untuk toggle submenu (default: Produk terbuka, Laporan tertutup)
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    Produk: false,
+    'Laporan transaksi': false,
+  });
+
+  const toggleSection = (title: string) => {
+    setOpenSections((prev) => ({ ...prev, [title]: !prev[title] }));
+  };
+
+  const isActive = (path: string) => location.pathname === path;
+
+  // Data submenu
+  const sections: SectionItem[] = [
+    {
+      title: 'Produk',
+      items: [
+        { label: 'Daftar produk', path: '/preview/admin/produk' },
+        { label: 'Stok', path: '/preview/admin/stok' },
+        { label: 'Riwayat stok', path: '/preview/admin/riwayat-stok' },
+      ],
+    },
+    {
+      title: 'Laporan transaksi',
+      items: [
+        { label: 'Ringkasan pembayaran', path: '/preview/admin/ringkasan-pembayaran' },
+        { label: 'Penjualan harian', path: '/preview/admin/penjualan-harian' },
+        { label: 'Produk terlaris', path: '/preview/admin/produk-terlaris' },
+      ],
+    },
+  ];
+
   return (
     <aside className="dashboard-sidebar">
+      {/* Brand */}
       <div className="sidebar-brand">
-        <div className="sidebar-logo" aria-hidden="true">P</div>
+        <div className="sidebar-logo">P</div>
         <h2>Point of Sale</h2>
       </div>
 
-      <nav className="sidebar-menu" aria-label="Navigasi utama">
-        <button className="sidebar-menu-item active" type="button" aria-current="page">
+      {/* Menu Utama */}
+      <nav className="sidebar-menu">
+        <Link
+          to="/preview/admin"
+          className={`sidebar-menu-item ${isActive('/preview/admin') ? 'active' : ''}`}
+        >
           Dashboard
-        </button>
+        </Link>
 
-        {role === "Admin" ? (
-          <>
-            <button className="sidebar-menu-item" type="button">Kategori</button>
+        <Link
+          to="/preview/admin/kategori"
+          className={`sidebar-menu-item ${isActive('/preview/admin/kategori') ? 'active' : ''}`}
+        >
+          Kategori
+        </Link>
 
-            <section className="sidebar-section" aria-labelledby="sidebar-products">
-              <h3 className="sidebar-section-title" id="sidebar-products">Produk</h3>
-              <div className="sidebar-submenu">
-                <button className="sidebar-submenu-item" type="button">Daftar produk</button>
-                <button className="sidebar-submenu-item" type="button">Stok</button>
-                <button className="sidebar-submenu-item" type="button">Riwayat stok</button>
-              </div>
-            </section>
+        {/* Section dengan submenu */}
+        {sections.map((section) => {
+          const isOpen = openSections[section.title];
 
-            <section className="sidebar-section" aria-labelledby="sidebar-reports">
-              <h3 className="sidebar-section-title" id="sidebar-reports">Laporan transaksi</h3>
-              <div className="sidebar-submenu">
-                <button className="sidebar-submenu-item" type="button">Ringkasan pembayaran</button>
-                <button className="sidebar-submenu-item" type="button">Penjualan harian</button>
-                <button className="sidebar-submenu-item" type="button">Produk terlaris</button>
-              </div>
-            </section>
-          </>
-        ) : (
-          <>
-            <button className="sidebar-menu-item" type="button">Transaksi baru</button>
-            <button className="sidebar-menu-item" type="button">Riwayat transaksi</button>
-          </>
-        )}
+          return (
+            <div className="sidebar-section" key={section.title}>
+              <button
+                type="button"
+                className={`sidebar-section-title ${isOpen ? 'open' : ''}`}
+                onClick={() => toggleSection(section.title)}
+              >
+                <span>{section.title}</span>
+                <span className="chevron" />
+              </button>
+
+              {isOpen && (
+                <div className="sidebar-submenu">
+                  {section.items.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      className={`sidebar-submenu-item ${isActive(item.path) ? 'active' : ''}`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </nav>
 
+      {/* Footer */}
       <div className="sidebar-preview-footer">
-        <span className="sidebar-role-mark">{role === "Admin" ? "AD" : "KS"}</span>
-        <div>
-          <strong>{role === "Admin" ? "Admin" : "Kasir"}</strong>
+        <div className="sidebar-role-mark">
+          {role === 'Admin' ? 'AD' : 'CS'}
+        </div>
+
+          <div className="sidebar-user-info">
+          <strong>{role}</strong>
           <span>Mode pratinjau</span>
         </div>
-        <a href="/" aria-label="Kembali ke halaman login" title="Kembali ke halaman login">Keluar</a>
+        <a href="/">Keluar</a>
       </div>
     </aside>
   );
-}
+};
+
+export default Sidebar;
