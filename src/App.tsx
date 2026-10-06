@@ -6,6 +6,7 @@ import KategoriDetailPage from "./pages/dashboard/KategoriDetailPage";
 import TambahKategoriPage from "./pages/dashboard/TambahKategoriPage";
 import ProductsList from "./pages/dashboard/products/ProductsList";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/preview/admin/kategori/:id" element={<KategoriDetailPage />} />
         <Route path="/preview/admin/produk" element={<ProductsList />} />
 
+
         {/* Cashier */}
         <Route path="/preview/cashier" element={<DashboardPage role="Cashier" />} />
 
@@ -28,6 +30,9 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
+
+
+  return <LoginPage />;
 }
 
 export default App;
