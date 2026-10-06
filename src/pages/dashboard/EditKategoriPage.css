@@ -1,6 +1,4 @@
-/* =========================================
-   HALAMAN TAMBAH KATEGORI
-========================================= */
+/* halaman edit category */
 .form-card {
   max-width: 720px;
   margin: 0 auto;
@@ -67,7 +65,47 @@
   box-shadow: 0 0 0 3px rgba(33, 75, 59, 0.08);
 }
 
-/* File input */
+/* edit jenis kategori */
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrap select {
+  width: 100%;
+  height: 42px;
+  padding: 0 40px 0 14px;
+  border: 1px solid #e1e7e3;
+  border-radius: 8px;
+  background: #fff;
+  color: #26352e;
+  font-family: inherit;
+  font-size: 13.5px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.select-wrap select:focus {
+  border-color: #214b3b;
+  box-shadow: 0 0 0 3px rgba(33, 75, 59, 0.08);
+}
+
+.select-chevron {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  color: #8894a0;
+  font-size: 16px;
+  line-height: 1;
+  transform: translateY(-55%);
+  pointer-events: none;
+}
+
+/* file input */
 .file-input-wrap {
   display: flex;
   align-items: center;
@@ -113,12 +151,13 @@
   white-space: nowrap;
 }
 
-/* Sembunyikan input file asli */
 .file-input-wrap input[type='file'] {
   display: none;
 }
 
-/* Tombol aksi */
+/* =========================================
+   TOMBOL AKSI
+========================================= */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -159,7 +198,7 @@
   transform: translateY(-1px);
 }
 
-/* Responsive */
+/* responsive */
 @media (max-width: 640px) {
   .form-card {
     padding: 24px 20px;
@@ -169,4 +208,24 @@
     grid-template-columns: 1fr;
     gap: 8px;
   }
+}
+
+.btn-hapus {
+  min-width: 96px;
+  padding: 11px 22px;
+  border: 0;
+  border-radius: 7px;
+  background: #d64545;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 140ms ease, background 140ms ease;
+  margin-right: auto;   /* ← dorong ke kiri */
+}
+
+.btn-hapus:hover {
+  background: #b73737;
+  transform: translateY(-1px);
 }

@@ -18,7 +18,7 @@ const KategoriDetailPage: React.FC = () => {
   const namaKategori = 'Makanan Berat';
   const produkList: ProdukRow[] = Array(6).fill(null).map((_, i) => ({
     id: i + 1,
-    gambar: '', // kosongin dulu, nanti diisi path gambar
+    gambar: '', 
     nama: 'Cendol',
     stok: 16,
     status: 'Aktif',
