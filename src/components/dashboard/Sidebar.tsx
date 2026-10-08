@@ -18,15 +18,7 @@ interface SectionItem {
 const Sidebar: React.FC<SidebarProps> = ({ role }) => {
   const location = useLocation();
 
-  // State untuk toggle submenu (default: Produk terbuka, Laporan tertutup)
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    Produk: false,
-    'Laporan transaksi': false,
-  });
-
-  const toggleSection = (title: string) => {
-    setOpenSections((prev) => ({ ...prev, [title]: !prev[title] }));
-  };
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -77,14 +69,20 @@ const Sidebar: React.FC<SidebarProps> = ({ role }) => {
 
         {/* Section dengan submenu */}
         {sections.map((section) => {
-          const isOpen = openSections[section.title];
+          const hasActivePage = section.items.some(({ path }) =>
+            location.pathname === path || location.pathname.startsWith(`${path}/`),
+          );
+          const isOpen = hasActivePage || openSections[section.title] === true;
 
           return (
             <div className="sidebar-section" key={section.title}>
               <button
                 type="button"
                 className={`sidebar-section-title ${isOpen ? 'open' : ''}`}
-                onClick={() => toggleSection(section.title)}
+                onClick={() => setOpenSections((previous) => ({
+                  ...previous,
+                  [section.title]: !isOpen,
+                }))}
               >
                 <span>{section.title}</span>
                 <span className="chevron" />

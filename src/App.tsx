@@ -5,6 +5,7 @@ import DashboardPage from "./pages/dashboard/DashboardPage";
 import KategoriPage from "./pages/dashboard/KategoriPage";
 import KategoriDetailPage from "./pages/dashboard/KategoriDetailPage";
 import TambahKategoriPage from "./pages/dashboard/TambahKategoriPage";
+import StockPages from "./pages/dashboard/stock/StockPages";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/preview/admin/kategori" element={<KategoriPage />} />
         <Route path="/preview/admin/kategori/tambah" element={<TambahKategoriPage />} />
         <Route path="/preview/admin/kategori/:id" element={<KategoriDetailPage />} />
+        <Route path="/preview/admin/stok" element={<StockPages />} />
 
         {/* Cashier */}
         <Route path="/preview/cashier" element={<DashboardPage role="Cashier" />} />
