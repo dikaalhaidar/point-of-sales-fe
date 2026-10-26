@@ -28,7 +28,7 @@ function LoginPage() {
       const role = result.data.role.trim().toLowerCase()
       const destination = role === 'admin'
         ? '/preview/admin'
-        : role === 'cashier' || role === 'kasir'
+        : role === 'cashier'
           ? '/preview/cashier'
           : null
 
@@ -85,12 +85,14 @@ function LoginPage() {
 
           <p className="form-footer">Belum punya akun? <a href="/register">Daftar</a></p>
 
+
           <div className="demo-access">
             <span>Pratinjau dashboard</span>
             <a href="/preview/admin">Admin</a>
             <a href="/preview/cashier">Kasir</a>
             <a href="/preview/pos">POS</a>
           </div>
+
 
         </div>
       </section>

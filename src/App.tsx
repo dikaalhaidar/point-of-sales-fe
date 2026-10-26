@@ -1,10 +1,14 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/dashboard/DashboardPage";
 import KategoriPage from "./pages/dashboard/KategoriPage";
 import KategoriDetailPage from "./pages/dashboard/KategoriDetailPage";
 import TambahKategoriPage from "./pages/dashboard/TambahKategoriPage";
 import ProductsList from "./pages/dashboard/products/ProductsList";
+
+
+import StockPages from "./pages/dashboard/stock/StockPages";
 
 
 function App() {
@@ -13,13 +17,18 @@ function App() {
       <Routes>
         {/* Default → Login */}
         <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
         {/* Admin */}
         <Route path="/preview/admin" element={<DashboardPage role="Admin" />} />
         <Route path="/preview/admin/kategori" element={<KategoriPage />} />
         <Route path="/preview/admin/kategori/tambah" element={<TambahKategoriPage />} />
         <Route path="/preview/admin/kategori/:id" element={<KategoriDetailPage />} />
+
         <Route path="/preview/admin/produk" element={<ProductsList />} />
+
+
+        <Route path="/preview/admin/stok" element={<StockPages />} />
 
 
         {/* Cashier */}
