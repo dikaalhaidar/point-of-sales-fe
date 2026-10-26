@@ -1,19 +1,48 @@
 import { useState, type FormEvent } from 'react'
 import piclogin from '../assets/pictlogin.png'
+import { register } from '../api' // sesuaikan path
 
 function RegisterPage() {
   const [message, setMessage] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    setMessage('')
 
-    const formData = new FormData(event.currentTarget)
-    if (formData.get('password') !== formData.get('confirmPassword')) {
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    const password = String(formData.get('password') ?? '')
+    const confirmPassword = String(formData.get('confirmPassword') ?? '')
+
+    if (password !== confirmPassword) {
       setMessage('Konfirmasi password belum cocok.')
       return
     }
 
-    setMessage('Pendaftaran belum terhubung ke server.')
+    setIsSubmitting(true)
+    try {
+      await register({
+        username: String(formData.get('username') ?? '').trim(),
+        password,
+        fullName: String(formData.get('fullName') ?? '').trim(),
+        address: String(formData.get('address') ?? '').trim(),
+        phoneNumber: String(formData.get('phoneNumber') ?? '').trim(),
+      })
+
+      setIsSuccess(true)
+      setMessage('Pendaftaran berhasil! Silakan masuk dengan akun Anda.')
+      form.reset()
+
+      // opsional: redirect ke login setelah 1.5 detik
+      // setTimeout(() => { window.location.href = '/' }, 1500)
+    } catch (err) {
+      setMessage((err as Error).message)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -37,11 +66,23 @@ function RegisterPage() {
             <label htmlFor="fullName">Nama lengkap</label>
             <input id="fullName" name="fullName" type="text" placeholder="Masukkan nama lengkap" autoComplete="name" required />
 
-            <div className="password-label"><label htmlFor="email">Email</label></div>
-            <input id="email" name="email" type="email" placeholder="nama@email.com" autoComplete="email" required />
-
             <div className="password-label"><label htmlFor="username">Username</label></div>
             <input id="username" name="username" type="text" placeholder="Buat username" autoComplete="username" required />
+
+            <div className="password-label"><label htmlFor="address">Alamat</label></div>
+            <input id="address" name="address" type="text" placeholder="Masukkan alamat" autoComplete="street-address" required />
+
+            <div className="password-label"><label htmlFor="phoneNumber">Nomor telepon</label></div>
+            <input
+              id="phoneNumber"
+              name="phoneNumber"
+              type="tel"
+              placeholder="+628123456789"
+              autoComplete="tel"
+              pattern="^\+[1-9]\d{7,14}$"
+              title="Gunakan format internasional, contoh +628123456789"
+              required
+            />
 
             <div className="password-label"><label htmlFor="password">Password</label></div>
             <input id="password" name="password" type="password" placeholder="Buat password" autoComplete="new-password" required />
@@ -49,8 +90,15 @@ function RegisterPage() {
             <div className="password-label"><label htmlFor="confirmPassword">Konfirmasi password</label></div>
             <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Ulangi password" autoComplete="new-password" required />
 
-            <button className="login-button" type="submit">Daftar</button>
-            {message && <p className="form-message" role="status">{message}</p>}
+            <button className="login-button" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Memproses...' : 'Daftar'}
+            </button>
+
+            {message && (
+              <p className="form-message" role="status" style={{ color: isSuccess ? 'green' : undefined }}>
+                {message}
+              </p>
+            )}
           </form>
 
           <p className="form-footer">Sudah punya akun? <a href="/">Masuk</a></p>
