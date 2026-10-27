@@ -158,7 +158,7 @@ th {
   padding: 10px 18px;
   border: none;
   border-radius: 7px;
-  background: #123c87;
+  background: #214b3b;
   color: #fff;
   cursor: pointer;
 }
@@ -178,4 +178,56 @@ th {
   color: #a16207;
   font-size: 13px;
   line-height: 1.5;
+}
+
+
+.product-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.product-count {
+  margin: 0;
+  color: #65736f;
+  font-size: 14px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagination-buttons button {
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid #aaa;
+  border-radius: 8px;
+  background: white;
+  color: #555;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pagination-buttons button.active {
+  border-color: #2c604b;
+  background: #2c604b;
+  color: white;
+}
+
+.pagination-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.product-filter select {
+  min-width: 180px;
 }
