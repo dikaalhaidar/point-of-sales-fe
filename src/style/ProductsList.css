@@ -1,0 +1,181 @@
+.product-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.product-content {
+  flex: 1;
+  padding: 30px;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-header button {
+  background: #2c604b;
+  color: white;
+  border: 0;
+  padding: 10px 16px;
+  border-radius: 8px;
+}
+
+.product-filter {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.product-filter input,
+.product-filter select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.product-filter input {
+  width: 300px;
+}
+
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background: #f5f5f5;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+}
+
+.action-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-icons button {
+  border: none;
+  background: none;
+  color: #65736f;
+  cursor: pointer;
+  padding: 2px;
+}
+
+
+.add-product-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.add-product-modal {
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.add-product-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.add-product-heading h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.add-product-heading button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.add-product-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-product-modal label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.add-product-modal input,
+.add-product-modal select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.add-product-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.add-product-actions button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #123c87;
+  color: #fff;
+  cursor: pointer;
+}
+
+.add-product-actions .cancel-button {
+  background: #e5e7eb;
+  color: #222;
+}
+
+.add-product-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-message {
+  margin: 8px 0 0;
+  color: #a16207;
+  font-size: 13px;
+  line-height: 1.5;
+}

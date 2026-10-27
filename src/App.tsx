@@ -5,6 +5,11 @@ import DashboardPage from "./pages/dashboard/DashboardPage";
 import KategoriPage from "./pages/dashboard/KategoriPage";
 import KategoriDetailPage from "./pages/dashboard/KategoriDetailPage";
 import TambahKategoriPage from "./pages/dashboard/TambahKategoriPage";
+import ProductsList from "./pages/dashboard/products/ProductsList";
+
+
+import StockPages from "./pages/dashboard/stock/StockPages";
+
 
 function App() {
   return (
@@ -20,6 +25,12 @@ function App() {
         <Route path="/preview/admin/kategori/tambah" element={<TambahKategoriPage />} />
         <Route path="/preview/admin/kategori/:id" element={<KategoriDetailPage />} />
 
+        <Route path="/preview/admin/produk" element={<ProductsList />} />
+
+
+        <Route path="/preview/admin/stok" element={<StockPages />} />
+
+
         {/* Cashier */}
         <Route path="/preview/cashier" element={<DashboardPage role="Cashier" />} />
 
@@ -28,6 +39,9 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
+
+
+  return <LoginPage />;
 }
 
 export default App;
