@@ -117,7 +117,7 @@ export default function ProductList() {
         if (!response.ok || result?.success === false) {
           throw new Error(
             result?.message ||
-              `Gagal mengambil produk. HTTP ${response.status}`
+            `Gagal mengambil produk. HTTP ${response.status}`
           );
         }
 
@@ -197,7 +197,7 @@ export default function ProductList() {
         if (!response.ok || result?.success === false) {
           throw new Error(
             result?.message ||
-              `Gagal mengambil kategori. HTTP ${response.status}`
+            `Gagal mengambil kategori. HTTP ${response.status}`
           );
         }
 
@@ -384,7 +384,7 @@ export default function ProductList() {
       if (!response.ok || result?.success === false) {
         throw new Error(
           result?.message ||
-            `Gagal ${isEditing ? "mengedit" : "menambahkan"} produk. HTTP ${response.status}`
+          `Gagal ${isEditing ? "mengedit" : "menambahkan"} produk. HTTP ${response.status}`
         );
       }
 
@@ -393,9 +393,9 @@ export default function ProductList() {
       setFormData(EMPTY_PRODUCT);
       setActionMessage(
         result?.message ||
-          (isEditing
-            ? "Produk berhasil diperbarui."
-            : "Produk berhasil ditambahkan.")
+        (isEditing
+          ? "Produk berhasil diperbarui."
+          : "Produk berhasil ditambahkan.")
       );
 
       setCurrentPage(1);
@@ -436,7 +436,7 @@ export default function ProductList() {
       if (!response.ok || result?.success === false) {
         throw new Error(
           result?.message ||
-            `Gagal mengambil detail produk. HTTP ${response.status}`
+          `Gagal mengambil detail produk. HTTP ${response.status}`
         );
       }
 
@@ -480,7 +480,7 @@ export default function ProductList() {
       if (!response.ok || result?.success === false) {
         throw new Error(
           result?.message ||
-            `Gagal mengambil produk untuk diedit. HTTP ${response.status}`
+          `Gagal mengambil produk untuk diedit. HTTP ${response.status}`
         );
       }
 
@@ -492,10 +492,10 @@ export default function ProductList() {
 
       const categoryId = String(
         product.categoryId ??
-          product.category?.id ??
-          products.find((item) => String(item.id) === String(id))
-            ?.categoryId ??
-          ""
+        product.category?.id ??
+        products.find((item) => String(item.id) === String(id))
+          ?.categoryId ??
+        ""
       );
 
       setEditingId(id);
@@ -558,7 +558,7 @@ export default function ProductList() {
       if (!response.ok || result?.success === false) {
         throw new Error(
           result?.message ||
-            `Gagal menonaktifkan produk. HTTP ${response.status}`
+          `Gagal menonaktifkan produk. HTTP ${response.status}`
         );
       }
 
